@@ -8,4 +8,7 @@ router.get('/', (req, res, next) => {
 
 router.post('/register', UserController.register)
 router.post('/login', UserController.login)
+
+// middleware authenticate should be here<<<<<<<<<<
+router.post('/apis/edamam', MainController.APIedamam)
 module.exports = router
