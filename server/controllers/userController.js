@@ -4,6 +4,41 @@ const { generateToken } = require('../helpers/jwt')
 
 
 class UserController {
+    static googleLogin (req, res, next){
+        const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID)
+
+        async function verify(){
+            const ticket = await client.verifyIdToken({
+                idToken: req.body.access_token,
+                audience: process.env.GOOGLE_CLIENT_ID
+            })
+
+            const googleUserParams = ticket.getPayload()
+
+            User.findOrCreate({
+                where: {
+                    email: googleUserParams.email
+                },
+                defaults: {
+                    name: googleUserParams.name,
+                    password: (new Date()).toDateString()
+                }
+            })
+
+            .then(user => {
+                let payload = { id: user.id, name: user.name, city: user.city, email: user.email }
+                res.status(200).json({
+                    id: user.id,
+                    name: user.name,
+                    city: user.city,
+                    email: user.email,
+                    access_token: generateToken(payload)
+                })
+            })
+        }
+    }
+
+
     static register(req, res, next) {
         const { name, city, email, password} = req.body
         const newUser = { name, city, email, password }
