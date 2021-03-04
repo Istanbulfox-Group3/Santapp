@@ -14,7 +14,7 @@ const authenticate = (req, res, next) => {
         })
         
         .then(user => {
-            req.currentUser = { id: user.id, email: user.email}
+            req.currentUser = { id: user.id, name: user.name, city: user.city, email: user.email}
             next()
         })
         

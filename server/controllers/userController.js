@@ -64,6 +64,10 @@ class UserController {
             next(err)
         })
     }
+
+    static logout (req, res, next){
+        localStorage.removeItem()
+    }
 }
 
 module.exports = UserController
