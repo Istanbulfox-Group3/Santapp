@@ -6,4 +6,7 @@ router.get('/', MainController.home)
 router.get('/recommendation', MainController.recommendation)
 router.post('/register', UserController.register)
 router.post('/login', UserController.login)
+
+// middleware authenticate should be here<<<<<<<<<<
+router.post('/apis/edamam', MainController.APIedamam)
 module.exports = router
