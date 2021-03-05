@@ -6,6 +6,11 @@ const jwt = require('jsonwebtoken')
 
 class MainController {
     static home (req, res, next) {
+        res.status(200).json({message : "success"})
+    }
+
+
+    static weather (req, res, next) {
         let access_token = req.headers.access_token
         let decoded = jwt.verify(access_token, process.env.JWT_SECRET_KEY)
         let city = decoded.city
