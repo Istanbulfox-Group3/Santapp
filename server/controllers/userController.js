@@ -5,13 +5,17 @@ const { OAuth2Client, JWT } = require('google-auth-library')
 
 
 class UserController {
-    // static googleOAuth (req, res, next) {
-    //     const {email, name, password} = req.body
-    //     User.findOrCreate({
 
+    // static findName (req, res, next) {
+    //     let name = req.headers.access_token
+
+
+    //     User.findOne({
+    //         where: {
+    //             name :
+    //         }
     //     })
     // }
-
 
 
     static googleOAuth (req, res, next){

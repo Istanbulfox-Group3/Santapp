@@ -11,6 +11,17 @@
   
   
 ## GET /
+> go to homepage
+
+  
+Response (200 - success)
+  
+Response (500 - Internal Server Error)
+```json
+    {message : "Internal Server Error"}
+```
+  
+## GET /weather
 > get todays weather from 3rd party API as home page
   
 Response (200 - success)
@@ -37,7 +48,6 @@ Response (500 - Internal Server Error)
 ```json
     {message : "Internal Server Error"}
 ```
-  
   
   
 ## GET/recommendation
@@ -99,6 +109,27 @@ Response (500 - Internal Server Error)
 ```json
     {message : "Internal Server Error"}
 ```
+
+## POST/oauth
+> Log in via google account to the app
+  
+Response (200 - success)
+```json
+[
+    {
+        "id": <custom id>,
+        "name": <custom name>,
+        "city": <custom city>,
+        "email": <custom email>,
+        "access_token": <custom access token>
+    }
+]
+```
+  
+Response (500 - Internal Server Error)
+```json
+    {message : "Internal Server Error"}
+```
   
 
 ## POST/logout
@@ -117,4 +148,35 @@ Response (200 - success)
 Response (500 - Internal Server Error)
 ```json
     {message : "Internal Server Error"}
+```
+
+## POST/apis/edamam
+> Show ingredients defined by input
+  
+Request.body
+```
+    ingredient as request
+```
+
+Response (200 - success)
+```json
+[
+    {
+        "imageURL" : <custom data>,
+        "Category" : <custom data>,
+        "Category Label" : <custom data>,
+        "Food" : <custom data>,
+        "Nutrients" : <custom data>
+    }
+]
+```
+  
+Response (500 - Internal Server Error)
+```json
+    {message : "Internal Server Error"}
+```
+
+Response (400 - Bad Request)
+```json
+    {message : "Bad Request"}
 ```

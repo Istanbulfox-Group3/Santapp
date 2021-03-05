@@ -39,15 +39,15 @@ $('document').ready(() => {
 })
 
 
-function home () {
-    $.ajax({
-        method : 'get',
-        url : base_url + '/weather',
-        headers : {
-            access_token : localStorage.access_token
-        }
-    })
-}
+// function home () {
+//     $.ajax({
+//         method : 'get',
+//         url : base_url + '/',
+//         headers : {
+//             access_token : localStorage.access_token
+//         }
+//     })
+// }
 
 function showWeather() {
     $('#table-head').hide()
