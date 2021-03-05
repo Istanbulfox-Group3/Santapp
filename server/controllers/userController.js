@@ -1,10 +1,19 @@
 const { User } = require('../models')
 const { comparePassword } = require('../helpers/bcrypt')
 const { generateToken } = require('../helpers/jwt')
+const { OAuth2Client } = require('google-auth-library')
 
 
 class UserController {
-    static googleLogin (req, res, next){
+    // static googleOAuth (req, res, next) {
+    //     console.log("ini req bodynya");
+    //     console.log(req.body);
+        
+    // }
+
+
+    static googleOAuth (req, res, next){
+        console.log("line 16");
         const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID)
 
         async function verify(){
@@ -14,6 +23,7 @@ class UserController {
             })
 
             const googleUserParams = ticket.getPayload()
+            console.log(googleUserParams);
 
             User.findOrCreate({
                 where: {
