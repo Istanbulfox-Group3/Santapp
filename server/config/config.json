@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "postgres",
-    "database": "Sant-app",
+    "database": "Santapp",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

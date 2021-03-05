@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Santap APP</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="987795356154-aj7cdt5ud0616abluo5n1kf51kupt97l.apps.googleusercontent.com">
 </head>
 
-<body>
-    
+<body style="background-image: url(./assets/background.jpeg);">
     
     <!-- LOGIN PAGE -->
     <div id="login-page">
@@ -33,8 +33,11 @@
                             <label for="pass-login" class="label">Password</label>
                             <input id="pass-login" type="password" class="input" data-type="password">
                         </div>
-                        <div class="group">
+                        <div class="group" style="width: 100%;margin: auto;text-align: center;">
                             <input id="btn-login" type="submit" class="button" value="Sign In">
+                            <br>
+                            <div class="g-signin2" data-onsuccess="onSignIn" style="width: 390px;"></div>
+                            <!-- <button type="submit" class="button" class="button g-signin2" data-onsuccess="onSignIn">Sign In With Google</button> -->
                         </div>
                         <div class="hr"></div>
                        
@@ -79,11 +82,11 @@
                   <a href="">Home</a>
                 </li>
                 <li>
-                  <a href="">API Features</a>
+                  <a href="">Click Me!</a>
                   <ul class="sub">
-                    <li><a href="">Wheater</a></li>
-                    <li><a href="">Find Restaurant Google API</a></li>
-                    <li><a href="" id="btn-edamam">Check your food detail</a></li>
+                    <li style="list-style: none;" id="weather-btn"><a href="">Weather</a></li>
+                    <li style="list-style: none;"><a href="" id="btn-place-search">Restaurants</a></li>
+                    <li style="list-style: none;"><a href="" id="btn-edamam">Foods</a></li>
                   </ul>
                 </li>
                 <li>
@@ -92,6 +95,10 @@
               </ul>
             </nav>
             </div>
+        </div>
+
+        <div id="greeting">
+
         </div>
 
 
@@ -132,11 +139,9 @@
           </div>
     </div>
 
+    <!-- API PLACE SEARCH -->
 
-
-    <!-- API EDAMAM -->
-    <div id="api-edamam">
-
+    <div id="api-place-search">
         <div id="nav">
             <div class="wrap">
             <span class="decor"></span>
@@ -146,11 +151,63 @@
                   <a href="">Home</a>
                 </li>
                 <li>
-                  <a href="">API Features</a>
+                  <a href="">Click Me!</a>
                   <ul class="sub">
-                    <li><a href="">Wheater</a></li>
-                    <li><a href="">Find Restaurant Google API</a></li>
-                    <li><a href="" id="btn-edamam">Check your food detail</a></li>
+                    <li style="list-style: none;" id="weather-btn"><a href="">Weather</a></li>
+                    <li style="list-style: none;"><a href="" id="btn-place-search">Restaurants</a></li>
+                    <li style="list-style: none;"><a href="" id="btn-edamam">Foods</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="" id="btn-logout" onclick="logout()">Logout</a>
+                </li>
+              </ul>
+            </nav>
+            </div>
+        </div>
+    <br>
+        <div class="tbl-header" id="restaurant-table">
+            <table cellpadding="0" cellspacing="0" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 5%;text-align: center;">No.</th>
+                    <th style="width: 25%;text-align: center;">Name</th>
+                    <th style="width: 40%;text-align: center;">Adress</th>
+                    <th style="width: 10%;text-align: center;">Rating</th>
+                    <th style="width: 10%;text-align: center;">Reviews</th>
+                    <th style="width: 10%;text-align: center;">Price Level</th>
+                </tr>
+            </thead>
+            </table>            
+        </div>
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="1" id="restaurants-content">
+            
+            </table>
+        </div>
+    </div>
+
+    <!-- END OF API PLACE SEARCH -->
+
+
+
+    <!-- API EDAMAM -->
+    <div id="api-edamam">
+
+        <div id="nav">
+            <div class="wrap">
+            <span class="decor"></span>
+                        <nav>
+              <ul class="primary">
+                <li>
+                  <a href="">Home</a>
+                </li>
+                <li>
+                  <a href="">Click Me!</a>
+                  <ul class="sub">
+                    <li style="list-style: none;" id="weather-btn"><a href="">Weather</a></li>
+                    <li style="list-style: none;"><a href="" id="btn-place-search">Restaurants</a></li>
+                    <li style="list-style: none;"><a href="" id="btn-edamam">Foods</a></li>
                   </ul>
                 </li>
                 <li>
@@ -182,7 +239,7 @@
         </div>
         
 
-        <section>
+        <section  id="table-head">
             <!--for demo wrap-->
             
             <div class="tbl-header">
@@ -209,7 +266,37 @@
         
     </div>
 
+    <!-- API WEATHER -->
+    <div id="weather-api">
+        <div id="nav">
+            <div class="wrap">
+            <span class="decor"></span>
+                        <nav>
+              <ul class="primary">
+                <li>
+                  <a href="">Home</a>
+                </li>
+                <li>
+                  <a href="">Click Me!</a>
+                  <ul class="sub">
+                    <li style="list-style: none;" id="weather-btn"><a href="">Weather</a></li>
+                    <li style="list-style: none;"><a href="" id="btn-place-search">Restaurants</a></li>
+                    <li style="list-style: none;"><a href="" id="btn-edamam">Foods</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="" id="btn-logout" onclick="logout()">Logout</a>
+                </li>
+              </ul>
+            </nav>
+            </div>
+        </div>
+    </div>
 
+    <div style="text-align: center;margin: auto;width: 100%;" id="weather-content">
+    </div>
+
+    <!-- END OF WEATHER API -->
 
 
 
@@ -220,16 +307,14 @@
     integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
         crossorigin="anonymous"></script>
     <script src="./main.js"></script>
-</body>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-</head>
-<body>
-    <!-- HOMEPAGE -->
-    <h1 class="Title">Welcome to SANTAPP</h1>
-    <script src="jquery-3.5.1.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script>
+        function signOut() {
+          var auth2 = gapi.auth2.getAuthInstance();
+          auth2.signOut().then(function () {
+            console.log('User signed out.');
+          });
+        }
+      </script>
 </body>
 
 </html>

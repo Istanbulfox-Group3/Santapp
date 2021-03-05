@@ -6,8 +6,13 @@ const jwt = require('jsonwebtoken')
 
 class MainController {
     static home (req, res, next) {
+        res.status(200).json({message : "success"})
+    }
+
+
+    static weather (req, res, next) {
         let access_token = req.headers.access_token
-        let decoded = jwt.verify(access_token, 'rahasia') // secret keynya nanti diganti sesuai dengan backend server
+        let decoded = jwt.verify(access_token, process.env.JWT_SECRET_KEY)
         let city = decoded.city
         axios({
             method : 'get',
@@ -54,7 +59,7 @@ class MainController {
 
     static recommendation (req, res, next) {
         let access_token = req.headers.access_token
-        let decoded = jwt.verify(access_token, 'rahasia') // secret keynya nanti diganti sesuai dengan backend server
+        let decoded = jwt.verify(access_token, process.env.JWT_SECRET_KEY) // secret keynya nanti diganti sesuai dengan backend server
         let city = decoded.city
         axios({
             method : 'get',
@@ -75,7 +80,9 @@ class MainController {
                 allResto.push(resto)
             });
             allResto.sort((a, b) => parseFloat(b.user_ratings_total) - parseFloat(a.user_ratings_total));
-            res.send(allResto)
+            console.log(allResto);
+            console.log("asdasdad");
+            res.status(200).json({allResto})
         })
         .catch(err => {
             res.send(err)
