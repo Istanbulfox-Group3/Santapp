@@ -75,6 +75,8 @@ class MainController {
                 allResto.push(resto)
             });
             allResto.sort((a, b) => parseFloat(b.user_ratings_total) - parseFloat(a.user_ratings_total));
+            console.log(allResto);
+            console.log("asdasdad");
             res.status(200).json({allResto})
         })
         .catch(err => {
