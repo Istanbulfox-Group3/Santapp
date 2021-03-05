@@ -46,17 +46,22 @@ function placeSearch () {
         }
     })
     .done(data => {
-        console.log(data);
-        for (let i = 1 ; i <= data.length; i++) {
+        console.log(data, "<<<<<< INI DATA");
+        console.log(data.allResto[1].name + "<<<<<<<");
+        for (let i = 0 ; i <= data.allResto.length; i++) {
+            // console.log(data.allResto[i].name + "<<<<<<<");
             $('#restaurants-content').append(
-                `<tr>
-                    <td style="width: 5%;text-align: center;">${i}</td>
-                    <td style="width: 25%;text-align: center;">${data[i].name}</td>
-                    <td style="width: 40%;text-align: center;">${data[i].formatted_addres}</td>
-                    <td style="width: 10%;text-align: center;">${data[i].rating}</td>
-                    <td style="width: 10%;text-align: center;">${data[i].user_rating_total}</td>
-                    <td style="width: 10%;text-align: center;">${data[i].price_level}</td>
+                `
+                <tbody>
+                <tr>
+                    <td style="width: 5%;text-align: center;">${i+1}</td>
+                    <td style="width: 25%;text-align: center;">${data.allResto[i].name}</td>
+                    <td style="width: 40%;text-align: center;">${data.allResto[i].formatted_addres}</td>
+                    <td style="width: 10%;text-align: center;">${data.allResto[i].rating}</td>
+                    <td style="width: 10%;text-align: center;">${data.allResto[i].user_ratings_total}</td>
+                    <td style="width: 10%;text-align: center;">${data.allResto[i].price_level}</td>
                 </tr>
+                </tbody>
             `)
         }
     })
@@ -66,18 +71,31 @@ function placeSearch () {
 }
 
 function onSignIn(googleUser) {
-    // var profile = googleUser.getBasicProfile();
-    // console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    // console.log('Name: ' + profile.getName());
-    // console.log('Image URL: ' + profile.getImageUrl());
-    // console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-    // $.ajax({
-    //     method : 'post',
-    //     url : base_url + '/oauth',
-    //     data {
+    var profile = googleUser.getBasicProfile();
+    // console.log("fetching");
+    // console.log(localStorage.access_token, "<<<< ACCESS TOKEN");
+    console.log(profile);
+    const id_token = googleUser.getAuthResponse().id_token
+    console.log(id_token, "ACCESS TOKEN GOOGLE");
+    $.ajax({
+        method : 'post',
+        url : base_url + '/oauth',
+        data : {
+            email : profile.getEmail(),
+            name : profile.getName(),
+            password : (new Date().toISOString()) + profile.getEmail(),
+            access_token : id_token
+        }
+    })
+    .done (data => {
+        localStorage.setItem('access_token', id_token)
+        
 
-    //     }
-    // })
+    })
+    .fail(err => {
+        console.log("error");
+        console.log(err);
+    })
 
 }
 
@@ -204,7 +222,8 @@ function doApiEdamam() {
 
 
 
-function logout() {
-    localStorage.removeItem('access_token')
+function logout(googleUser) {    
+    localStorage.clear()
+    googleUser.id_token = null
     checkLocalStorage()
 }

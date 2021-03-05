@@ -13,7 +13,7 @@
     <meta name="google-signin-client_id" content="987795356154-aj7cdt5ud0616abluo5n1kf51kupt97l.apps.googleusercontent.com">
 </head>
 
-<body>
+<body style="background-image: url(./assets/background.jpeg);">
     
     <!-- LOGIN PAGE -->
     <div id="login-page">
@@ -36,7 +36,7 @@
                         <div class="group" style="width: 100%;margin: auto;text-align: center;">
                             <input id="btn-login" type="submit" class="button" value="Sign In">
                             <br>
-                            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                            <div class="g-signin2" data-onsuccess="onSignIn" style="width: 390px;"></div>
                             <!-- <button type="submit" class="button" class="button g-signin2" data-onsuccess="onSignIn">Sign In With Google</button> -->
                         </div>
                         <div class="hr"></div>
@@ -171,16 +171,15 @@
                     <th style="width: 40%;text-align: center;">Adress</th>
                     <th style="width: 10%;text-align: center;">Rating</th>
                     <th style="width: 10%;text-align: center;">Reviews</th>
-                    <th style="width: 10%;text-align: center;">Price</th>
+                    <th style="width: 10%;text-align: center;">Price Level</th>
                 </tr>
             </thead>
+            </table>            
+        </div>
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="1" id="restaurants-content">
+            
             </table>
-
-            <div class="tbl-content">
-                <table cellpadding="0" cellspacing="0" border="1" id="restaurants-content">
-                
-                </table>
-            </div>
         </div>
     </div>
 
@@ -274,6 +273,14 @@
     integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
         crossorigin="anonymous"></script>
     <script src="./main.js"></script>
+    <script>
+        function signOut() {
+          var auth2 = gapi.auth2.getAuthInstance();
+          auth2.signOut().then(function () {
+            console.log('User signed out.');
+          });
+        }
+      </script>
 </body>
 
 </html>
