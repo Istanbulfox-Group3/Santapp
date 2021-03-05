@@ -1,0 +1,6 @@
+.env
+node_modules
+package-lock.json
+migrations/20210304123131-create-user.js
+config/config.json
+sandbox.js

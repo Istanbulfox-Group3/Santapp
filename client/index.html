@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santap APP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="987795356154-aj7cdt5ud0616abluo5n1kf51kupt97l.apps.googleusercontent.com">
+</head>
+
+<body style="background-image: url(./assets/background.jpeg);">
+    
+    <!-- LOGIN PAGE -->
+    <div id="login-page">
+
+        <h1 class="login-title">Welcome to SantAPP</h1>
+        <div class="login-wrap">
+            <div class="login-html">
+                <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+                <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+                <div class="login-form">
+                    <div class="sign-in-htm">
+                        <div class="group">
+                            <label for="email-login" class="label">Email Address</label>
+                            <input id="email-login" type="text" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="pass-login" class="label">Password</label>
+                            <input id="pass-login" type="password" class="input" data-type="password">
+                        </div>
+                        <div class="group" style="width: 100%;margin: auto;text-align: center;">
+                            <input id="btn-login" type="submit" class="button" value="Sign In">
+                            <br>
+                            <div class="g-signin2" data-onsuccess="onSignIn" style="width: 390px;"></div>
+                            <!-- <button type="submit" class="button" class="button g-signin2" data-onsuccess="onSignIn">Sign In With Google</button> -->
+                        </div>
+                        <div class="hr"></div>
+                       
+                    </div>
+                    <div class="sign-up-htm">
+                        <div class="group">
+                            <label for="name-reg" class="label">Name</label>
+                            <input id="name-reg" type="text" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="city-reg" class="label">City</label>
+                            <input id="city-reg" type="text" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="email-reg" class="label">Email Address</label>
+                            <input id="email-reg" type="text" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="pass-reg" class="label">Password</label>
+                            <input id="pass-reg" type="password" class="input" data-type="password">
+                        </div>
+                        <div class="group">
+                            <input id="btn-reg" type="submit" class="button" value="Sign Up">
+                        </div>
+                        <!-- <p>please sign up</p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <!-- HOMEPAGE -->
+    <div id="home-page">
+        <div id="nav">
+            <div class="wrap">
+            <span class="decor"></span>
+            <nav>
+              <ul class="primary">
+                <li>
+                  <a href="">Home</a>
+                </li>
+                <li>
+                  <a href="">Click Me!</a>
+                  <ul class="sub">
+                    <li style="list-style: none;" id="weather-btn"><a href="">Weather</a></li>
+                    <li style="list-style: none;"><a href="" id="btn-place-search">Restaurants</a></li>
+                    <li style="list-style: none;"><a href="" id="btn-edamam">Foods</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="" id="btn-logout" onclick="logout()">Logout</a>
+                </li>
+              </ul>
+            </nav>
+            </div>
+        </div>
+
+        <div id="greeting">
+
+        </div>
+
+
+        <div class="wrapper">
+            <header class="header"><h2>Best Choice for any food preferences</h2></header>
+            <figure class="featured-image-1">
+                <img src="https://images.unsplash.com/photo-1559466273-d95e72debaf8?ixid=MXwxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vZCUyMHBvcnRyYWl0fGVufDB8fDB8&ixlib=rb-1.2.1&w=1000&q=80" alt="food1">
+             </figure>
+            <div class="number-1">1</div>
+            <article class="article article-1">
+              <h2>Tantalizing Food</h2>
+              <p>There will always be a space for this one in your tummy right ?</p>
+            </article>
+            <figure class="featured-image-2">
+                <img src="https://www.sarahaasrdn.com/wp-content/uploads/2017/03/Blood-Orange-Moroccan-Salad.jpg" alt="food2">
+             </figure>
+            <div class="number-2">2</div>
+            <article class="article article-2">
+              <h2>Healthy Food</h2>
+              <p>Who wants to see your belly bloated either ?</p>
+            </article>
+            <figure class="featured-image-3">
+                <img src="https://www.wellandgood.com/wp-content/uploads/2019/04/Unsplash-meal-kits-food-waste-MarianaMedvedeva-1.jpeg" alt="food3">
+             </figure>
+            <div class="number-3">3</div>
+            <article class="article article-3">
+              <h2>Culture Based Food</h2>
+              <p>Loved to know other culture, you're gonna love this too</p>
+            </article>
+            <figure class="featured-image-4">
+                <img src="https://www.shutterstock.com/blog/wp-content/uploads/sites/5/2018/12/featured12.jpg" alt="food4">
+             </figure>
+            <div class="number-4">4</div>
+            <article class="article article-4">
+              <h2>and of course a good drinks</h2>
+              <p>Happy tummy, happy day!</p>
+            </article>
+          </div>
+    </div>
+
+    <!-- API PLACE SEARCH -->
+
+    <div id="api-place-search">
+        <div id="nav">
+            <div class="wrap">
+            <span class="decor"></span>
+            <nav>
+              <ul class="primary">
+                <li>
+                  <a href="">Home</a>
+                </li>
+                <li>
+                  <a href="">Click Me!</a>
+                  <ul class="sub">
+                    <li style="list-style: none;" id="weather-btn"><a href="">Weather</a></li>
+                    <li style="list-style: none;"><a href="" id="btn-place-search">Restaurants</a></li>
+                    <li style="list-style: none;"><a href="" id="btn-edamam">Foods</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="" id="btn-logout" onclick="logout()">Logout</a>
+                </li>
+              </ul>
+            </nav>
+            </div>
+        </div>
+    <br>
+        <div class="tbl-header" id="restaurant-table">
+            <table cellpadding="0" cellspacing="0" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 5%;text-align: center;">No.</th>
+                    <th style="width: 25%;text-align: center;">Name</th>
+                    <th style="width: 40%;text-align: center;">Adress</th>
+                    <th style="width: 10%;text-align: center;">Rating</th>
+                    <th style="width: 10%;text-align: center;">Reviews</th>
+                    <th style="width: 10%;text-align: center;">Price Level</th>
+                </tr>
+            </thead>
+            </table>            
+        </div>
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="1" id="restaurants-content">
+            
+            </table>
+        </div>
+    </div>
+
+    <!-- END OF API PLACE SEARCH -->
+
+
+
+    <!-- API EDAMAM -->
+    <div id="api-edamam">
+
+        <div id="nav">
+            <div class="wrap">
+            <span class="decor"></span>
+                        <nav>
+              <ul class="primary">
+                <li>
+                  <a href="">Home</a>
+                </li>
+                <li>
+                  <a href="">Click Me!</a>
+                  <ul class="sub">
+                    <li style="list-style: none;" id="weather-btn"><a href="">Weather</a></li>
+                    <li style="list-style: none;"><a href="" id="btn-place-search">Restaurants</a></li>
+                    <li style="list-style: none;"><a href="" id="btn-edamam">Foods</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="" id="btn-logout" onclick="logout()">Logout</a>
+                </li>
+              </ul>
+            </nav>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                    <h2>Ingredient Detail</h2>
+            </div>
+            <div class="row">
+                    <h4 style="text-align:center">Try to type "chicken"</h4>
+            </div>
+            <div class="row input-container">
+                    <div class="col-xs-12">
+                        <div class="styled-input wide">
+                            <input id="input-query-edamam" type="text" required >
+                            <label>Ingredient Name</label> 
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div id="btn-api-edamam" onclick="" class="btn-lrg submit-btn">I'm Curious about this ingredient</div>
+                    </div>
+            </div>
+        </div>
+        
+
+        <section  id="table-head">
+            <!--for demo wrap-->
+            
+            <div class="tbl-header">
+                <table cellpadding="0" cellspacing="0" border="1">
+                <thead>
+                    <tr>
+                    <th>Image</th>
+                    <th>Category</th>
+                    <th>Category Label</th>
+                    <th>Food</th>
+                    <th>Nutrients</th>
+                    </tr>
+                </thead>
+                </table>
+            </div>
+            <div class="tbl-content">
+                <table cellpadding="0" cellspacing="0" border="1" id="table-content">
+                
+                </table>
+            </div>
+        </section>
+
+
+        
+    </div>
+
+    <!-- API WEATHER -->
+    <div id="weather-api">
+        <div id="nav">
+            <div class="wrap">
+            <span class="decor"></span>
+                        <nav>
+              <ul class="primary">
+                <li>
+                  <a href="">Home</a>
+                </li>
+                <li>
+                  <a href="">Click Me!</a>
+                  <ul class="sub">
+                    <li style="list-style: none;" id="weather-btn"><a href="">Weather</a></li>
+                    <li style="list-style: none;"><a href="" id="btn-place-search">Restaurants</a></li>
+                    <li style="list-style: none;"><a href="" id="btn-edamam">Foods</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="" id="btn-logout" onclick="logout()">Logout</a>
+                </li>
+              </ul>
+            </nav>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center;margin: auto;width: 100%;" id="weather-content">
+    </div>
+
+    <!-- END OF WEATHER API -->
+
+
+
+
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <script src="./main.js"></script>
+    <script>
+        function signOut() {
+          var auth2 = gapi.auth2.getAuthInstance();
+          auth2.signOut().then(function () {
+            console.log('User signed out.');
+          });
+        }
+      </script>
+</body>
+
+</html>
