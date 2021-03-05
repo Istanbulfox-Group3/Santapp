@@ -1,4 +1,5 @@
 const axios = require('axios')
+
 const {User} = require('../models')
 const jwt = require('jsonwebtoken')
 
@@ -6,7 +7,7 @@ const jwt = require('jsonwebtoken')
 class MainController {
     static home (req, res, next) {
         let access_token = req.headers.access_token
-        let decoded = jwt.verify(access_token, 'rahasia') // secret keynya nanti diganti sesuai dengan backend server
+        let decoded = jwt.verify(access_token, process.env.JWT_SECRET_KEY)
         let city = decoded.city
         axios({
             method : 'get',
@@ -32,9 +33,28 @@ class MainController {
         })
     }
 
+
+    static APIedamam(req,res,next){
+        console.log(req.body);
+        axios({
+            method :'get',
+            url : `https://api.edamam.com/api/food-database/v2/parser?ingr=${req.body.searchFood}&app_id=${process.env.APP_ID_EDAMAM}&app_key=${process.env.APP_KEY_EDAMAM}`
+        })
+        .then(responseAPI=>{
+            console.log(responseAPI.data, "ini di controller-------");
+            res.status(200).json(responseAPI.data )
+            
+        })
+        
+        .catch(err=>{
+            next(err)
+            console.log(err);
+        })
+    }
+
     static recommendation (req, res, next) {
         let access_token = req.headers.access_token
-        let decoded = jwt.verify(access_token, 'rahasia') // secret keynya nanti diganti sesuai dengan backend server
+        let decoded = jwt.verify(access_token, process.env.JWT_SECRET_KEY) // secret keynya nanti diganti sesuai dengan backend server
         let city = decoded.city
         axios({
             method : 'get',
@@ -55,10 +75,11 @@ class MainController {
                 allResto.push(resto)
             });
             allResto.sort((a, b) => parseFloat(b.user_ratings_total) - parseFloat(a.user_ratings_total));
-            res.send(allResto)
+            res.status(200).json({allResto})
         })
         .catch(err => {
             res.send(err)
+
         })
     }
 }

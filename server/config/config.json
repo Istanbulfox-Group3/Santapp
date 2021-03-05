@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "postgres",
-    "password": "PassWorld",
-    "database": "Sant-app",
+    "password": "postgres",
+    "database": "Santapp",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

@@ -45,6 +45,10 @@ class UserController {
                     access_token: generateToken(payload)
                 })
             })
+            .catch(err => {
+                console.log("ERROR");
+                res.status(400).json({err})
+            })
         }
     }
 

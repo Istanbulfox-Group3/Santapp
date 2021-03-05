@@ -6,8 +6,7 @@ router.get('/', MainController.home)
 router.get('/recommendation', MainController.recommendation)
 router.post('/register', UserController.register)
 router.post('/login', UserController.login)
-router.post('/googleoauth', UserController.googleOAuth)
-// router.post('/googleoauth', (req, res) => {
-//     console.log("sini sini");
-// })
+router.post('/oauth', UserController.googleOAuth)
+// middleware authenticate should be here<<<<<<<<<<
+router.post('/apis/edamam', MainController.APIedamam)
 module.exports = router
